@@ -27,6 +27,8 @@
     "vue-router": "^4.5.0",
     "vue3-apexcharts": "1.5.2",
     "vue3-perfect-scrollbar": "^2.0.0",
+    "vue3-lottie": "^2.5.0",
+    "clipboard": "^2.0.11",
     "vuetify": "3.7.5",
     "webfontloader": "^1.6.28"
   },

@@ -2,6 +2,7 @@
 import NavItems from '@/layouts/components/NavItems.vue'
 import logo from '@images/logo.svg?raw'
 import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue'
+import config from '@/config';
 
 // Components
 import Footer from '@/layouts/components/Footer.vue'
@@ -68,7 +69,7 @@ import UserProfile from '@/layouts/components/UserProfile.vue'
         <!-- eslint-enable -->
 
         <h1 class="font-weight-medium leading-normal text-xl text-uppercase">
-          Materio
+          {{ config.SYS_NAME }}
         </h1>
       </RouterLink>
 

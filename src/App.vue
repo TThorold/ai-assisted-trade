@@ -5,6 +5,8 @@ import UpgradeToPro from '@/components/UpgradeToPro.vue'
 <template>
   <VApp>
     <RouterView />
-    <UpgradeToPro />
+    <!-- 消息条 -->
+    <Snackbar />
+    <!-- <UpgradeToPro /> -->
   </VApp>
 </template>

@@ -9,6 +9,10 @@ export const routes = [
         component: () => import('@/pages/dashboard.vue'),
       },
       {
+        path: 'dialogue',
+        component: () => import('@/views/biz/dashboards/dialogue/index.vue'),
+      },
+      {
         path: 'account-settings',
         component: () => import('@/pages/account-settings.vue'),
       },
@@ -48,7 +52,7 @@ export const routes = [
       },
       {
         path: '/:pathMatch(.*)*',
-        component: () => import('@/pages/[...error].vue'),
+        component: () => import('@/layouts/404.vue'),
       },
     ],
   },

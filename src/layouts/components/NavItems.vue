@@ -20,6 +20,12 @@ import VerticalNavLink from '@layouts/components/VerticalNavLink.vue'
         to: '/dashboard',
       }"
     />
+    <VerticalNavLink
+      :item="{
+        title: '提示词学习大厅',
+        to: '/dialogue',
+      }"
+    />
   </VerticalNavGroup>
 
   <!-- 👉 Apps & Pages -->

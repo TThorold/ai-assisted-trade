@@ -6,6 +6,8 @@ import authV1MaskDark from '@images/pages/auth-v1-mask-dark.png'
 import authV1MaskLight from '@images/pages/auth-v1-mask-light.png'
 import authV1Tree2 from '@images/pages/auth-v1-tree-2.png'
 import authV1Tree from '@images/pages/auth-v1-tree.png'
+import { useSnackbarStore } from '@/store/snackbarStore.js'
+import { router } from '@/plugins/router/index.js'
 
 const form = ref({
   email: '',
@@ -14,10 +16,16 @@ const form = ref({
 })
 
 const vuetifyTheme = useTheme()
+const snackbar = useSnackbarStore()
 
 const authThemeMask = computed(() => {
   return vuetifyTheme.global.name.value === 'light' ? authV1MaskLight : authV1MaskDark
 })
+
+const login = () => {
+  router.push({ path: '/' })
+  snackbar.showSuccessMessage('登录成功')
+}
 
 const isPasswordVisible = ref(false)
 </script>
@@ -98,7 +106,7 @@ const isPasswordVisible = ref(false)
               <VBtn
                 block
                 type="submit"
-                to="/"
+                @click="login"
               >
                 Login
               </VBtn>
