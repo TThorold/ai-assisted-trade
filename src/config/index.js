@@ -6,7 +6,7 @@ export default {
   DASHBOARD_URL: "/index",
 
   // 接口地址
-  API_URL: import.meta.env.VITE_APP_API_URL,
+  API_URL: import.meta.env.VITE_APP_API_URL + '/api',
 
   // 主题
   THEME: "light",

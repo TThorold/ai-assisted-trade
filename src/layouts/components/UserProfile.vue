@@ -1,5 +1,9 @@
 <script setup>
 import avatar1 from '@images/avatars/avatar-1.png'
+
+const logOut = () => {
+
+}
 </script>
 
 <template>
@@ -110,7 +114,7 @@ import avatar1 from '@images/avatars/avatar-1.png'
           <VDivider class="my-2" />
 
           <!-- 👉 Logout -->
-          <VListItem to="/login">
+          <VListItem @click="logOut">
             <template #prepend>
               <VIcon
                 class="me-2"

@@ -44,7 +44,7 @@ export const routes = [
     children: [
       {
         path: 'login',
-        component: () => import('@/pages/login.vue'),
+        component: () => import('@/views/auth/login.vue'),
       },
       {
         path: 'register',

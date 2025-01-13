@@ -140,4 +140,7 @@ export default {
   VNavigationDrawer: {
     touchless: true,
   },
+  VSheet: {
+    elevation: 1
+  },
 }
