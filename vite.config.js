@@ -9,6 +9,7 @@ import svgLoader from 'vite-svg-loader'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/ai-assisted-trade/',
   plugins: [
     vue(),
     vueJsx(),
@@ -58,6 +59,7 @@ export default defineConfig({
   },
   build: {
     chunkSizeWarningLimit: 5000,
+    outDir: "docs"
   },
   optimizeDeps: {
     exclude: ['vuetify'],
