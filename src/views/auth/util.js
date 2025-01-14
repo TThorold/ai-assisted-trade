@@ -7,10 +7,11 @@ import authApi from '@/api/auth.js'
 
 const snackbar = useSnackbarStore()
 
-export const afterLogin = async (loginToken) => {
+export const afterLogin = async loginToken => {
 
   if (loginToken) {
     tool.data.set('TOKEN', loginToken)
+    tool.session.set('auth_token', loginToken)
     // 获取角色身份
     const userInfo = await authApi.getUserInfo()
     console.log(userInfo)

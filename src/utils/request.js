@@ -1,9 +1,8 @@
 import axios from 'axios'
 import sysConfig from '@/config/index'
-import tool from '@/utils/tool.js'
-import { tansParams } from '@/utils/common.js'
+import tool from '@/utils/tool'
+import { tansParams } from '@/utils/common'
 import * as qs from 'postcss-scss'
-import Cookies from 'lodash'
 
 // 加密白名單
 const encryptWhiteList = ['/login/']
@@ -38,6 +37,7 @@ service.interceptors.request.use(
   config => {
     // 是否需要设置 token
     const isToken = (config.headers || {}).isToken === false
+
     // 是否需要防止数据重复提交
     const isRepeatSubmit = (config.headers || {}).repeatSubmit === false
 
@@ -61,6 +61,7 @@ service.interceptors.request.use(
         data: data,
         time: new Date().getTime(),
       }
+
       const sessionObj = tool.session.get('sessionObj')
       if (sessionObj === undefined || sessionObj === null || sessionObj === '') {
         tool.session.set('sessionObj', requestObj)
@@ -78,6 +79,7 @@ service.interceptors.request.use(
         }
       }
     }
+
     return config
   },
   error => {
@@ -88,7 +90,7 @@ service.interceptors.request.use(
 
 // HTTP response 拦截器
 service.interceptors.response.use(
-  (response) => {
+  response => {
     // 配置了blob，不处理直接返回文件流
     if (response.config.responseType === 'blob') {
       if (response.status === 200) {
@@ -133,7 +135,7 @@ service.interceptors.response.use(
         'reject',
         'saveDraft',
       ]
-      apiNameArray.forEach((apiName) => {
+      apiNameArray.forEach(apiName => {
         if (responseUrls[responseUrls.length - 1] === apiName) {
           // message.success(data.msg)
           // snackbarStore.showSuccessMessage('请求成功！')
@@ -142,7 +144,7 @@ service.interceptors.response.use(
     }
     return Promise.resolve(data)
   },
-  (error) => {
+  error => {
     if (error) {
       console.log(error)
       const status = 503
@@ -183,7 +185,7 @@ export const baseRequest = (url, value = {}, method = 'post', options = {}) => {
 }
 
 export const moduleRequest =
-  (moduleUrl) =>
+  moduleUrl =>
     (url, ...arg) => {
       return baseRequest(moduleUrl + url, ...arg)
     }

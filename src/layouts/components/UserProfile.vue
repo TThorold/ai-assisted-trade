@@ -1,8 +1,13 @@
 <script setup>
 import avatar1 from '@images/avatars/avatar-1.png'
+import tool from '@/utils/tool'
+import { router } from '@/plugins/router/index'
 
 const logOut = () => {
-
+  // 清理掉个人的一些信息
+  tool.data.clear()
+  location.reload()
+  router.replace({ path: '/login' })
 }
 </script>
 

@@ -40,7 +40,7 @@ const requestMessages = computed(() => {
   } else {
     // 截取最新的10条信息
     const slicedMessages = messages.value.slice(-10)
-
+    
     return [...promptMessage.value, ...slicedMessages]
   }
 })
@@ -53,10 +53,10 @@ const sendMessage = async () => {
       content: userMessage.value,
       role: 'user',
     })
-
+    
     // Create a completion
     await createCompletion()
-
+    
     // Clear the input
     userMessage.value = ''
   }
@@ -71,13 +71,13 @@ const createCompletion = async () => {
     //   AiAgentName: 'AI-3',
     //   Content: userMessage.value,
     // })
-
+    
     // Add the bot message
     messages.value.push({
       content: reply,
       role: 'assistant',
     })
-
+    
   } catch (error) {
     snackbarStore.showErrorMessage('请求错误!')
   }
@@ -98,14 +98,14 @@ watch(
 const displayMessages = computed(() => {
   const messagesCopy = messages.value.slice() // 创建原始数组的副本
   const lastMessage = messagesCopy[messagesCopy.length - 1]
-
+  
   const updatedLastMessage = {
     ...lastMessage,
     content: countAndCompleteCodeBlocks(lastMessage.content),
   }
-
+  
   messagesCopy[messagesCopy.length - 1] = updatedLastMessage
-
+  
   return messagesCopy
 })
 
@@ -125,20 +125,20 @@ const inputRow = ref(1)
 </script>
 
 <template>
-  <div class='chat-bot'>
-    <div class='messsage-area'>
+  <div class="chat-bot">
+    <div class="messsage-area">
       <PerfectScrollbar
-        v-if='messages.length > 0'
-        class='message-container'
+        v-if="messages.length > 0"
+        class="message-container"
       >
-        <template v-for='message in displayMessages'>
+        <template v-for="message in displayMessages">
           <div v-if="message.role === 'user'">
-            <div class='pa-5 user-message'>
-              <div class='message align-center text-pre-wrap'>
-                <VAvatar class='mr-4 mr-lg-8'>
+            <div class="pa-5 user-message">
+              <div class="message align-center text-pre-wrap">
+                <VAvatar class="mr-4 mr-lg-8">
                   <img
-                    alt='alt'
-                    src='@images/avatars/avatar-1.png'
+                    alt="alt"
+                    src="@images/avatars/avatar-1.png"
                   >
                 </VAvatar>
                 <span> {{ message.content }}</span>
@@ -146,12 +146,12 @@ const inputRow = ref(1)
             </div>
           </div>
           <div v-else>
-            <div class='pa-5 assitant-message'>
-              <div class='message'>
-                <VAvatar class='mr-4 mr-lg-8'>
+            <div class="pa-5 assitant-message">
+              <div class="message">
+                <VAvatar class="mr-4 mr-lg-8">
                   <img
-                    alt='alt'
-                    src='@images/avatars/avatar-2.png'
+                    alt="alt"
+                    src="@images/avatars/avatar-2.png"
                   >
                 </VAvatar>
                 {{ message.content }}
@@ -162,47 +162,47 @@ const inputRow = ref(1)
       </PerfectScrollbar>
       <div
         v-else
-        class='no-message-container'
+        class="no-message-container"
       >
-        <h1 class='text-h4 text-md-h2 text-primary font-weight-bold'>
+        <h1 class="text-h4 text-md-h2 text-primary font-weight-bold">
           Ask Me Any Thing
         </h1>
-
+        
         <Vue3Lottie
-          animation-link='https://assets5.lottiefiles.com/packages/lf20_eYXADRNJPy.json'
-          style='height: 350px'
+          animation-link="https://assets5.lottiefiles.com/packages/lf20_eYXADRNJPy.json"
+          style="height: 350px"
         />
       </div>
     </div>
-    <div class='input-area'>
+    <div class="input-area">
       <VSheet
-        class='input-panel d-flex align-center pa-1'
-        style='background: transparent;'
-        elevation='0'
-        max-width='1200'
+        class="input-panel d-flex align-center pa-1"
+        elevation="0"
+        max-width="1200"
+        style="background: transparent;"
       >
         <VTextarea
-          ref='input'
-          v-model='userMessage'
-          :rows='inputRow'
-          class='mx-2'
+          ref="input"
+          v-model="userMessage"
+          :rows="inputRow"
+          class="mx-2"
           clearable
-          color='primary'
-          density='default'
+          color="primary"
+          density="default"
           hide-details
           no-resize
-          placeholder='Ask Me Anything'
-          type='text'
-          variant='solo'
-          @blur='inputRow = 1'
-          @focus='inputRow = 3'
-          @keydown='handleKeydown'
+          placeholder="Ask Me Anything"
+          type="text"
+          variant="solo"
+          @blur="inputRow = 1"
+          @focus="inputRow = 3"
+          @keydown="handleKeydown"
         />
         <VBtn
-          color='primary'
-          icon='ri-send-plane-fill'
-          variant='elevated'
-          @click='sendMessage'
+          color="primary"
+          icon="ri-send-plane-fill"
+          variant="elevated"
+          @click="sendMessage"
         />
       </VSheet>
       <!--      <ApiKeyDialog /> -->
@@ -210,25 +210,25 @@ const inputRow = ref(1)
   </div>
 </template>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .chat-bot {
   height: 100vh;
   //display: flex;
   //flex-direction: column;
   min-block-size: 100%;
   position: relative;
-
+  
   .messsage-area {
     //flex: 1;
   }
-
+  
   .input-area {
     padding-top: 1rem;
     align-items: center;
     position: sticky;
     width: 100%;
     bottom: 10%;
-
+    
     .input-panel {
       border-radius: 5px;
       max-width: 1200px;
@@ -264,7 +264,7 @@ const inputRow = ref(1)
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  
   h1 {
     font-size: 2rem;
     font-weight: 500;

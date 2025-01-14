@@ -50,8 +50,8 @@ module.exports = {
     // Enforce consistent spacing inside braces of object (Already present in TypeScript)
     'object-curly-spacing': ['error', 'always'],
 
-    // Enforce camelCase naming convention
-    'camelcase': 'error',
+    // 强制执行驼峰命名约定
+    // 'camelcase': 'error',
 
     // Disable max-len
     'max-len': 'off',
@@ -62,24 +62,24 @@ module.exports = {
     // add parens ony when required in arrow function
     'arrow-parens': ['error', 'as-needed'],
 
-    // add new line above comment
-    'newline-before-return': 'error',
+    // 在return语句之前必须有一行空行
+    // 'newline-before-return': 'error',
 
-    // add new line above comment
-    'lines-around-comment': [
-      'error',
-      {
-        beforeBlockComment: true,
-        beforeLineComment: true,
-        allowBlockStart: true,
-        allowClassStart: true,
-        allowObjectStart: true,
-        allowArrayStart: true,
-
-        // We don't want to add extra space above closing SECTION
-        ignorePattern: '!SECTION',
-      },
-    ],
+    // 确保注释前后有空行
+    // 'lines-around-comment': [
+    //   'error',
+    //   {
+    //     beforeBlockComment: true,
+    //     beforeLineComment: true,
+    //     allowBlockStart: true,
+    //     allowClassStart: true,
+    //     allowObjectStart: true,
+    //     allowArrayStart: true,
+    //
+    //     // We don't want to add extra space above closing SECTION
+    //     ignorePattern: '!SECTION',
+    //   },
+    // ],
 
     // Ignore _ as unused variable
 
@@ -88,13 +88,11 @@ module.exports = {
 
     'vue/multi-word-component-names': 'off',
 
-    'padding-line-between-statements': [
-      'error',
-      { blankLine: 'always', prev: 'expression', next: 'const' },
-      { blankLine: 'always', prev: 'const', next: 'expression' },
-      { blankLine: 'always', prev: 'multiline-const', next: '*' },
-      { blankLine: 'always', prev: '*', next: 'multiline-const' },
-    ],
+    // 'padding-line-between-statements': [
+    //   'error',
+    //   { blankLine: 'always', prev: 'multiline-const', next: '*' },
+    //   { blankLine: 'always', prev: '*', next: 'multiline-const' },
+    // ],
 
     // Plugin: eslint-plugin-import
     'import/prefer-default-export': 'off',
